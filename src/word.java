@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Word {
+public class word {
     private String randomword; // Строка для хранения случайного слова
     private int length; // Длина слова
 
