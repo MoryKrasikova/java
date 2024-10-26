@@ -6,7 +6,7 @@ public class word {
     private int length; // Длина слова
 
     // Конструктор
-    public Word() {
+    public word() {
         randomword = null;
         length = 0;
     }
