@@ -29,8 +29,9 @@ public class Word {
             if (!words.isEmpty()) {
                 Random rand = new Random(); // Инициализация генератора случайных чисел
                 int randomindex = rand.nextInt(words.size()); // Генерация случайного индекса
-                length = words.get(randomindex).length(); // Узнаем длину случайного слова
-                randomword = words.get(randomindex); // Сохраняем случайное слово
+                randomword = words.get(randomindex);// Сохраняем случайное слово
+                length = words.get(randomindex).length(); // Узнаем длину случайного слово
+
             }
         } catch (FileNotFoundException e) {
             System.err.println("Ошибка открытия файла");
