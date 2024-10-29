@@ -3,9 +3,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String filename = "", userinput, input;
-        int i, wr = 0, filenamber;
-        List<String> anspeople = new ArrayList<>();
+        String filename = "";
+        char userinput;
+        int i, wr, filenamber;
+        List<Character> anspeople = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Выберите категорию слов:");
@@ -25,7 +26,6 @@ public class Main {
                 System.err.println("Неверный ввод");
             }
         }
-        scanner.close();
 
         if (filenamber == 1) filename = "animals.txt";
         else if(filenamber == 2) filename = "countries.txt";
@@ -37,6 +37,51 @@ public class Main {
 
         String w = word.GetRandomWord();
         int len = word.GetLength();
-        System.out.print(w);
+        GameResult gr = new GameResult();
+        gr.SetCurrentWord(w);
+
+        String alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        for(i = 0; i<len; i++)
+        {
+            anspeople.add('_');
+        }
+
+        while(gr.GetRightAnswers()<len && gr.GetWrongAnswers()<6)
+        {
+            int count = 0;
+            System.out.print("Слово из " + len + " букв, введите букву - ");
+
+            Letter let = new Letter(scanner);
+            userinput = let.Chek();
+
+            gr.SetAnswer(userinput);
+            gr.Check(userinput, len, alf, anspeople);
+
+            for (i = 0; i < len; i++)
+            {
+                if (!anspeople.get(i).equals('_'))
+                {
+                    count += 1;
+                }
+            }
+
+            if (count == len)//при выигрыше, когда в слове не останется не отгаданных букв
+            {
+                wr = gr.GetWinResult();
+                System.out.println("Вы отгадали слово - " + w + " за " + wr + " попыток.");
+                gr.DisplayLetters();
+                gr.KolWin();
+                break;
+            }
+
+            else if(gr.GetWrongAnswers() == 6)
+            {
+                System.out.println("Вы проиграли! Слво - " + w);
+                gr.DisplayLetters();
+                gr.KolLoss();
+                break;
+            }
+        }
+        scanner.close();
     }
 }
