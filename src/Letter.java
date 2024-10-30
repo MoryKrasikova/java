@@ -1,21 +1,11 @@
 import java.util.Scanner;
 public class Letter {
-    private char letter;
     private Scanner scanner;
-    public Letter() {}
 
     public Letter(Scanner scanner) {
         this.scanner = scanner; // Инициализация scanner
     }
     // Конструктор
-    public Letter(char letter) {
-        this.letter = letter;
-    }
-
-    // Метод для получения буквы
-    public char GetValue() {
-        return letter;
-    }
     public char Chek()
     {
 
