@@ -5,7 +5,7 @@ public class Answers {
     protected int rightanswers; // Количество верных ответов
     private int tries; // Количество попыток
     private String currentword; // Текущее слово
-    private ArrayList<Letter> letters; // Массив объектов Letter
+    private ArrayList<Character> letters; // Массив объектов Letter
 
     public Answers() {
         wronganswers = 0;
@@ -25,12 +25,10 @@ public class Answers {
     public void SetCurrentWord(String word) {
         currentword = word;
     }
-    public void SetAnswer(char ans) {
-        AddLetter(ans); // Записываем букву в массив
+    public void AddAnswer(char letter) {
+        letters.add(letter); // Записываем букву в массив
     }
-    private void AddLetter(char letter) {
-        letters.add(new Letter(letter)); // Создаем новый объект и добавляем в массив
-    }
+
     public void Check(char answer, int wordlength, String usedletters, List<Character> anspeople) {
         int kol = 0; // Количество совпадений
         int kol1 = 0; // Количество использованных букв
@@ -72,8 +70,8 @@ public class Answers {
 
     public void DisplayLetters() {
         System.out.print("Введенные буквы: ");
-        for (Letter letter : letters) {
-            System.out.print(letter.GetValue() + " "); // Получаем значения букв
+        for (char letter : letters) {
+            System.out.print(letter + " "); // Получаем значения букв
         }
         System.out.println();
     }
