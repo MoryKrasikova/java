@@ -1,11 +1,10 @@
 import java.util.Scanner;
 public class Letter {
     private Scanner scanner;
-
+    // Конструктор
     public Letter(Scanner scanner) {
         this.scanner = scanner; // Инициализация scanner
     }
-    // Конструктор
     public char Chek()
     {
 

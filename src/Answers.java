@@ -5,7 +5,7 @@ public class Answers {
     protected int rightanswers; // Количество верных ответов
     private int tries; // Количество попыток
     private String currentword; // Текущее слово
-    private ArrayList<Character> letters; // Массив объектов Letter
+    private ArrayList<Character> letters; // Массив ответов
 
     public Answers() {
         wronganswers = 0;
