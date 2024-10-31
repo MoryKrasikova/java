@@ -21,7 +21,7 @@ public class GameResult extends Answers{
     }
 
     public void KolWin() {
-        String filename = "wins.txt"; // Замените на имя вашего файла
+        String filename = "wins.txt";
         File file = new File(filename);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 
