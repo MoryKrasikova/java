@@ -68,22 +68,24 @@ public class Main {
                     wr = gr.GetWinResult();
                     System.out.println("Вы отгадали слово - " + w + " за " + wr + " попыток.");
                     gr.DisplayLetters();
-                    gr.KolWin();
                     break;
                 } else if (gr.GetWrongAnswers() == 6) {
                     System.out.println("Вы проиграли! Слво - " + w);
                     gr.DisplayLetters();
-                    gr.KolLoss();
                     break;
                 }
             }
             scanner.nextLine();
-            System.out.print("Если вы хотите выйти из игры введите '0', иначе  '1' - ");
-            int input;
+            System.out.println("Меню: ");
+            System.out.println("1 - Продолжить игру");
+            System.out.println("2 - Посмотреть количество выигрышей");
+            System.out.println("3 - Посмотреть количество проигрышей");
+            System.out.println("0 - Выйти из игры");
+            int input1;
             while (true) {
                 try {
-                    input = Integer.parseInt(scanner.nextLine());
-                    if (input != 1 && input != 0)
+                    input1 = Integer.parseInt(scanner.nextLine());
+                    if (input1 < 0 && input1 > 3)
                         System.out.println("Вы ввели неверное число");
                     else
                         break;
@@ -91,7 +93,35 @@ public class Main {
                     System.err.println("Неверный ввод");
                 }
             }
-            answer = input;
+            if(input1==1 || input1==0){
+                answer = input1;
+            }
+            else if(input1==2 || input1==3) {
+                if(input1==2) {
+                    gr.KolWin();
+                    int kolwin = gr.GetWin();
+                    System.out.println("Количество выигрышей = " + kolwin);
+                }
+                else if(input1==3) {
+                    gr.KolLoss();
+                    int kolloss = gr.GetLoss();
+                    System.out.println("Количество проигрышей = " + kolloss);
+                }
+                System.out.print("Если вы хотите выйти из игры введите '0', иначе  '1' - ");
+                int input2;
+                while (true) {
+                    try {
+                        input2 = Integer.parseInt(scanner.nextLine());
+                        if (input2 != 1 && input2 != 0)
+                            System.out.println("Вы ввели неверное число");
+                        else
+                            break;
+                    } catch (NumberFormatException e) {
+                        System.err.println("Неверный ввод");
+                    }
+                }
+                answer = input2;
+            }
         }
         scanner.close();
     }
