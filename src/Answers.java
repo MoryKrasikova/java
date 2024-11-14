@@ -9,7 +9,7 @@ public class Answers {
 
     public Answers() {
         wronganswers = 0;
-        this.rightanswers = 0;
+        rightanswers = 0;
         tries = 6;
         currentword = "";
         letters = new ArrayList<>(); // Инициализация ArrayList
