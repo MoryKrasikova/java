@@ -37,7 +37,11 @@ public class Main {
             else if (filenamber == 4) filename = "plants.txt";
 
             Word word = new Word();
-            word.SelectRandomWord(filename);
+            try{
+                word.SelectRandomWord(filename);
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
 
             String w = word.GetRandomWord();
             GameResult gr = new GameResult();
@@ -129,7 +133,7 @@ public class Main {
 
         }
         scanner.close();
-        int kol = 0;
+        int kol = 1;
         for (GameResult result : results) {
             GameOutcome outcome = result.getOutcome();
             System.out.print("За " + kol + " игру: ");

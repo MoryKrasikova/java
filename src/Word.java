@@ -13,7 +13,7 @@ public class Word {
     }
 
     // Метод для выбора случайного слова
-    public void SelectRandomWord(String filename) {
+    public void SelectRandomWord(String filename) throws IOException {
 
         List<String> words = new ArrayList<>(); // Список для хранения слов
 
