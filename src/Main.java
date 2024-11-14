@@ -8,6 +8,8 @@ public class Main {
         int i, wr, filenamber;
         int answer = 1;
         Scanner scanner = new Scanner(System.in);
+
+        ArrayList<GameResult> results = new ArrayList<>();
         while(answer==1) {
             List<Character> anspeople = new ArrayList<>();
 
@@ -38,10 +40,10 @@ public class Main {
             word.SelectRandomWord(filename);
 
             String w = word.GetRandomWord();
-            int len = word.GetLength();
             GameResult gr = new GameResult();
-            gr.SetCurrentWord(w);
+            int len = word.GetLength();
 
+            gr.SetCurrentWord(w);
             String alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
             for (i = 0; i < len; i++) {
                 anspeople.add('_');
@@ -68,10 +70,12 @@ public class Main {
                     wr = gr.GetWinResult();
                     System.out.println("Вы отгадали слово - " + w + " за " + wr + " попыток.");
                     gr.DisplayLetters();
+                    results.add(gr);
                     break;
                 } else if (gr.GetWrongAnswers() == 6) {
                     System.out.println("Вы проиграли! Слво - " + w);
                     gr.DisplayLetters();
+                    results.add(gr);
                     break;
                 }
             }
@@ -122,7 +126,15 @@ public class Main {
                 }
                 answer = input2;
             }
+
         }
         scanner.close();
+        int kol = 0;
+        for (GameResult result : results) {
+            System.out.print("За " + kol + " игру: ");
+            System.out.println(result); // Вызывается метод toString()
+            kol+=1;
+        }
     }
+
 }
