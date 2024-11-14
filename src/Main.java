@@ -131,8 +131,9 @@ public class Main {
         scanner.close();
         int kol = 0;
         for (GameResult result : results) {
+            GameOutcome outcome = result.getOutcome();
             System.out.print("За " + kol + " игру: ");
-            System.out.println(result); // Вызывается метод toString()
+            System.out.println(outcome); // Вызывается метод toString()
             kol+=1;
         }
     }
