@@ -81,4 +81,7 @@ public class GameResult extends Answers{
         }
         return winresult;
     }
+    public String toString() {
+        return "Правильные ответы: " + rightanswers + ", Неверные ответы: " + wronganswers;
+    }
 }
