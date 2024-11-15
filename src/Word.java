@@ -34,9 +34,9 @@ public class Word {
 
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Ошибка открытия файла");
+            throw new IOException("Ошибка открытия файла: " + filename, e);
         } catch (IOException e) {
-            System.err.println("Ошибка чтения файла");
+            throw new IOException("Ошибка чтения файла: " + filename, e);
         }
     }
 
