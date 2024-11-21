@@ -58,6 +58,10 @@ public class Main {
                 System.out.print("Слово из " + len + " букв, введите букву - ");
 
                 Letter let = new Letter(scanner);
+                // Мелкое копирование
+                Letter shallowCopiedLetter = let.shallowCopy();
+                // Глубокое копирование
+                Letter deepCopiedLetter = let.deepCopy();
                 userinput = let.Chek();
 
                 gr.AddAnswer(userinput);

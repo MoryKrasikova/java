@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Letter {
+public class Letter implements Cloneable{
     private Scanner scanner;
     // Конструктор
     public Letter(Scanner scanner) {
@@ -22,5 +22,18 @@ public class Letter {
             }
         }
         return letter;
+    }
+    // Мелкое копирование
+    public Letter shallowCopy() {
+        try {
+            return (Letter) this.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Клонирование не поддерживается", e);
+        }
+    }
+
+    // Глубокое копирование
+    public Letter deepCopy() {
+        return new Letter(new Scanner(System.in));
     }
 }
