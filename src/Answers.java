@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Answers {
+abstract class Answers {
     protected int wronganswers; // Количество неверных ответов
     protected int rightanswers; // Количество верных ответов
     private int tries; // Количество попыток
     private String currentword; // Текущее слово
     private ArrayList<Character> letters; // Массив ответов
 
-    public Answers() {
-        wronganswers = 0;
-        rightanswers = 0;
-        tries = 6;
+    public Answers(int wrong, int right, int tries) {
+        this.wronganswers = wrong;
+        this.rightanswers = right;
+        this.tries = tries;
         currentword = "";
         letters = new ArrayList<>(); // Инициализация ArrayList
     }
@@ -75,4 +75,13 @@ public class Answers {
         }
         System.out.println();
     }
+    public void displayStats() {
+        System.out.println("Статистика ответов:");
+        System.out.println("Верные ответы: " + rightanswers);
+        System.out.println("Неверные ответы: " + wronganswers);
+    }
+
+    // Абстрактный метод
+    public abstract void displayStats1(); // Чистая виртуальная функция
 }
+

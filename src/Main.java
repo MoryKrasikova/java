@@ -44,7 +44,7 @@ public class Main {
             }
 
             String w = word.GetRandomWord();
-            GameResult gr = new GameResult();
+            GameResult gr = new GameResult(0,0,6,0,0,0, 0);
             int len = word.GetLength();
 
             gr.SetCurrentWord(w);
@@ -83,6 +83,7 @@ public class Main {
                     break;
                 }
             }
+            gr.displayStats();
             scanner.nextLine();
             System.out.println("Меню: ");
             System.out.println("1 - Продолжить игру");

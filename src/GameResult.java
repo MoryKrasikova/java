@@ -7,17 +7,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
 
-public class GameResult extends Answers{
+class GameResult extends Answers{
 
     private int win;
     private int loss;
     private int winresult;
+    private int kolres;
 
-    public GameResult(){
-        super(0,0);
-        win = 0;
-        loss = 0;
-        winresult = 0;
+    public GameResult(int wrong, int right, int tries, int wins, int losses, int winres, int kol){
+        super(wrong,right,tries);
+        this.win = wins;
+        this.loss = losses;
+        this.winresult = winres;
+        this.kolres = kol;
     }
 
     public void KolWin() {
@@ -41,6 +43,7 @@ public class GameResult extends Answers{
     public int GetLoss() { return loss; }
 
     public void KolLoss() {
+        kolres = rightanswers + wronganswers;
         String filename = "loss.txt"; // Имя файла с числом
         int kol = 0;
         try {
@@ -70,6 +73,7 @@ public class GameResult extends Answers{
 
     public int GetWinResult() {
         winresult = rightanswers + wronganswers;
+        kolres = winresult;
         String filename = "wins.txt";
         String texttoappend = String.valueOf(winresult);
 
@@ -86,5 +90,17 @@ public class GameResult extends Answers{
     }
     public GameOutcome getOutcome() {
         return new GameOutcome(rightanswers, wronganswers);
+    }
+    @Override
+    public void displayStats() {
+        // Вызываем метод базового класса для вывода статистики ответов
+        super.displayStats();
+        System.out.println("Попытки: " + kolres);
+    }
+    public void displayStats1() {
+        System.out.println("Статистика ответов:");
+        System.out.println("Верные ответы:" + rightanswers);
+        System.out.println("Неверные ответы:" + wronganswers);
+        System.out.println("Попытки: " + kolres);
     }
 }
