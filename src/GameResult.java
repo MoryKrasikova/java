@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
 
-class GameResult extends Answers{
+public class GameResult extends Answers implements GameOutcome{
 
     private int win;
     private int loss;
@@ -40,10 +40,13 @@ class GameResult extends Answers{
         return win;
     }
 
-    public int GetLoss() { return loss; }
+    public int GetLoss()
+    {
+        kolres = rightanswers + wronganswers;
+        return loss;
+    }
 
     public void KolLoss() {
-        kolres = rightanswers + wronganswers;
         String filename = "loss.txt"; // Имя файла с числом
         int kol = 0;
         try {
@@ -85,12 +88,11 @@ class GameResult extends Answers{
         }
         return winresult;
     }
+    @Override
     public String toString() {
         return "Правильные ответы: " + rightanswers + ", Неверные ответы: " + wronganswers;
     }
-    public GameOutcome getOutcome() {
-        return new GameOutcome(rightanswers, wronganswers);
-    }
+
     @Override
     public void displayStats() {
         // Вызываем метод базового класса для вывода статистики ответов

@@ -83,5 +83,12 @@ abstract class Answers {
 
     // Абстрактный метод
     public abstract void displayStats1(); // Чистая виртуальная функция
+    public int getRightAnswers() {
+        return rightanswers;
+    }
+
+    public int getWrongAnswers() {
+        return wronganswers;
+    }
 }
 

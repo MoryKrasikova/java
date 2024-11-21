@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         String filename = "";
         char userinput;
-        int i, wr, filenamber;
+        int i, wr, filenamber, ls;
         int answer = 1;
         Scanner scanner = new Scanner(System.in);
 
@@ -78,6 +78,7 @@ public class Main {
                     break;
                 } else if (gr.GetWrongAnswers() == 6) {
                     System.out.println("Вы проиграли! Слво - " + w);
+                    ls = gr.GetLoss();
                     gr.DisplayLetters();
                     results.add(gr);
                     break;
@@ -136,7 +137,7 @@ public class Main {
         scanner.close();
         int kol = 1;
         for (GameResult result : results) {
-            GameOutcome outcome = result.getOutcome();
+            GameOutcome outcome = result;
             System.out.print("За " + kol + " игру: ");
             System.out.println(outcome); // Вызывается метод toString()
             kol+=1;
