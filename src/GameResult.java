@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GameResult extends Answers implements GameOutcome{
 
@@ -104,5 +107,25 @@ public class GameResult extends Answers implements GameOutcome{
         System.out.println("Верные ответы:" + rightanswers);
         System.out.println("Неверные ответы:" + wronganswers);
         System.out.println("Попытки: " + kolres);
+    }
+    private List<Integer> stats = new ArrayList<>();
+    // Метод для заполнения и сортировки
+    public void addStats() {
+        Collections.addAll(stats, wronganswers, rightanswers, kolres, win, loss, winresult);
+        Collections.sort(stats); // Сортируем список
+    }
+    // Метод для вывода
+    public void printStats() {
+        for (int i = 0; i < stats.size(); i++) {
+            System.out.print(stats.get(i));
+            if (i < stats.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(); // Переход на новую строку
+    }
+    // Метод для поиска
+    public boolean findStat(int value) {
+        return stats.contains(value);
     }
 }

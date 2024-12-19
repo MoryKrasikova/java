@@ -136,7 +136,16 @@ public class Main {
                 }
                 answer = input2;
             }
-
+            System.out.println("Контейнер: ");
+            gr.addStats();
+            gr.printStats();
+            System.out.print("Введите цифру для поиска: ");
+            int value = scanner.nextInt();
+            if (gr.findStat(value)) {
+                System.out.println("Значение " + value + " найдено в контейнере.");
+            } else {
+                System.out.println("Значение " + value + " не найдено в контейнере.");
+            }
         }
         scanner.close();
         int kol = 1;
